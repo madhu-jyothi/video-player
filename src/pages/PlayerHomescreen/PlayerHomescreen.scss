@@ -1,0 +1,42 @@
+.player-homescreen-component {
+  .header {
+    font-size: 32px;
+    font-weight: 500;
+    padding: 12px;
+    border-bottom: 1px solid #353b48;
+    margin-bottom: 40px;
+    height: 40px;
+  }
+  .content-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: inherit;
+    padding: 12px;
+
+    .player-container {
+      // background-color: salmon;
+      width: calc(70% - 12px);
+      height: calc(100dvh - 140px);
+      overflow-y: scroll;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .playlist {
+      // background-color: peachpuff;
+      width: calc(30% - 12px);
+      height: calc(100dvh - 140px);
+      overflow-y: scroll;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

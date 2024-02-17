@@ -1,0 +1,53 @@
+.playlist-component {
+  // background-color: #202634; // for currently playing video
+
+  .search-bar {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 1px solid #353b48;
+
+    input {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 18px;
+      width: calc(100% - 28px);
+    }
+    svg {
+      height: 28px;
+      aspect-ratio: 1 / 1;
+    }
+  }
+  .playlist-card {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0px;
+
+    background-color: #202634;
+    padding: 12px;
+    border-radius: 8px;
+    img {
+      border-radius: 4px;
+    }
+    .title {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .description {
+      font-size: 1rem;
+    }
+  }
+.current-playing{
+  background-color: #353b48;
+}
+
+
+}

@@ -1,0 +1,107 @@
+.video-player-component {
+  padding: 12px;
+
+  .video-player-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    position: relative;
+
+    .video-player {
+      height: 100%;
+      width: 100%;
+      border-radius: 12px;
+      position: absolute;
+      top: 0%;
+      right: 0%;
+    }
+    
+    transition: all 0.2s ease-in;
+    .controls-screen {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background-color: #4b505c;
+      opacity: 0.6;
+      border-radius: 12px;
+
+      transition: all 0.2s ease-in;
+
+
+      .icons {
+        height: 20px;
+        aspect-ratio: 1 / 1;
+      }
+
+      .playback-icons {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+
+        .seek {
+          height: 60px;
+          margin: 0 20px;
+        }
+      }
+
+      .progress-sound-icons {
+        width: 100%;
+        position: absolute;
+        bottom: 0%;
+        display: flex;
+        align-items: center;
+
+        .progress-tracker {
+          width: 90%;
+
+          .time {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .video-player-range {
+            width: 100%;
+          }
+        }
+
+        .other-ctrls {
+          width: 10%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
+      }
+
+      .volume-icon{
+        position: relative;
+
+
+.vol-input{
+  position: absolute;
+  bottom: -150%;
+  left: -300%;
+}
+
+      }
+    }
+  }
+
+  .video-details {
+    margin-top: 20px;
+    background-color: #202634;
+    padding: 12px;
+    border-radius: 12px;
+
+    .title {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    .description {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-top: 8px;
+    }
+  }
+}

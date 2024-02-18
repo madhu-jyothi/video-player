@@ -27,7 +27,7 @@
   }
   .playlist-card {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
     margin: 12px 0px;
 
@@ -36,6 +36,8 @@
     border-radius: 8px;
     img {
       border-radius: 4px;
+      width: 30%;
+      aspect-ratio: 1 / 1;
     }
     .title {
       font-size: 1.4rem;
@@ -49,5 +51,18 @@
   background-color: #353b48;
 }
 
+@media (max-width: 1024px) {
+
+  .playlist-card {
+
+    .title {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .description {
+      font-size: 0.8rem;
+    }
+  }
+}
 
 }

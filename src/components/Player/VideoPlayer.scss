@@ -15,8 +15,9 @@
       top: 0%;
       right: 0%;
     }
-    
+
     transition: all 0.2s ease-in;
+
     .controls-screen {
       position: relative;
       height: 100%;
@@ -59,29 +60,36 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            .current-time {
+              margin-left: 8px;
+            }
           }
+
           .video-player-range {
             width: 100%;
           }
         }
 
         .other-ctrls {
-          width: 10%;
+          width: 20%;
           display: flex;
           align-items: center;
           justify-content: space-around;
         }
       }
 
-      .volume-icon{
+      .volume-icon {
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-
-.vol-input{
-  position: absolute;
-  bottom: -150%;
-  left: -300%;
-}
+        .vol-input {
+          position: absolute;
+          bottom: 150%;
+          left: -370%;
+        }
 
       }
     }
@@ -103,5 +111,77 @@
       font-weight: 400;
       margin-top: 8px;
     }
+  }
+
+  @media (max-width: 650px) {
+    .video-player-container {
+      .controls-screen {
+
+        .icons {
+          height: 20px;
+          aspect-ratio: 1 / 1;
+        }
+
+        .playback-icons {
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          transform: translate(50%, -50%);
+
+          .seek {
+            height: 40px;
+            margin: 0 10px;
+          }
+        }
+
+        .progress-sound-icons {
+          width: 100%;
+          position: absolute;
+          bottom: 0%;
+          display: flex;
+          align-items: center;
+
+          .progress-tracker {
+            width: 80%;
+
+            .time {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .current-time {
+                margin-left: 8px;
+              }
+            }
+
+            .video-player-range {
+              width: 100%;
+            }
+          }
+
+          .other-ctrls {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+          }
+        }
+
+        .volume-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .vol-input {
+            position: absolute;
+            bottom: 150%;
+            left: -370%;
+          }
+
+        }
+      }
+    }
+
   }
 }

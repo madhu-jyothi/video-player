@@ -46,13 +46,19 @@ const VideoPlayer = ({ currentPlayingVideo }) => {
   }
 
   useEffect(() => {
+    const handleMetadataLoaded = () => {
+      const durationInSeconds = videoTagRef?.current?.duration;
+      const minutes = Math.floor(durationInSeconds / 60);
+      const seconds = Math.floor(durationInSeconds % 60);
+      setSettings(prev => ({ ...prev, videoDuration: `${minutes}:${seconds}` }));
+    };
 
-    const durationInSeconds = videoTagRef?.current?.duration;
-    const minutes = Math.floor(durationInSeconds / 60);
-    const seconds = Math.floor(durationInSeconds % 60);
-    setSettings(prev => ({ ...prev, videoDuration: `${minutes}:${seconds}` }))
+    videoTagRef.current.addEventListener('loadedmetadata', handleMetadataLoaded);
 
-  }, [videoTagRef])
+    return () => {
+      videoTagRef.current.removeEventListener('loadedmetadata', handleMetadataLoaded);
+    };
+  }, [videoTagRef.current]);
 
 
   useEffect(() => {

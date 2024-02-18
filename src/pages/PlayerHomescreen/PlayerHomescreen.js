@@ -6,6 +6,7 @@ import Playlist from "../../components/Playlist/Playlist";
 const PlayerHomescreen = () => {
   const [videoList, SetVideoList] = useState([]);
 
+
   const [selectedVideo, setSelectedVideo] = useState({});
 
   useEffect(() => {
@@ -18,8 +19,17 @@ const PlayerHomescreen = () => {
       .then((res) => res.text())
       .then((videos) => {
         var jsonString = videos.match(/\{(.|\n)*\}/)[0];
+        const videoData = JSON.parse(localStorage.getItem('videoData'))
+
+        debugger
         SetVideoList(JSON.parse(jsonString).categories[0].videos);
-        setSelectedVideo(JSON.parse(jsonString).categories[0].videos[0]);
+        if (videoData) {
+          setSelectedVideo(videoData);
+        } else {
+          let firstIndexVideo = JSON.parse(jsonString).categories[0].videos[0]
+          setSelectedVideo(firstIndexVideo);
+          localStorage.setItem('videoData', JSON.stringify(firstIndexVideo))
+        }
       });
   }, []);
 

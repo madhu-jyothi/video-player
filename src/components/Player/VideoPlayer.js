@@ -10,7 +10,7 @@ import { ReactComponent as Maximize } from "../../assets/maximizelogo.svg";
 import { ReactComponent as Minimize } from "../../assets/minimizelogo.svg";
 import { ReactComponent as Volume } from "../../assets/volumelogo.svg";
 
-const VideoPlayer = ({ currentPlayingVideo }) => {
+const VideoPlayer = ({ currentPlayingVideo, }) => {
   const [settings, setSettings] = useState(defaultSettings);
 
   const videoTagRef = useRef()
@@ -51,6 +51,14 @@ const VideoPlayer = ({ currentPlayingVideo }) => {
       const minutes = Math.floor(durationInSeconds / 60);
       const seconds = Math.floor(durationInSeconds % 60);
       setSettings(prev => ({ ...prev, videoDuration: `${minutes}:${seconds}` }));
+
+      const videoSettings = JSON.parse(localStorage.getItem('videoSettings'))
+
+
+      if (videoSettings) {
+        videoTagRef.current.currentTime = videoSettings.currentDurationRaw
+      }
+
     };
 
     videoTagRef.current.addEventListener('loadedmetadata', handleMetadataLoaded);
@@ -68,19 +76,26 @@ const VideoPlayer = ({ currentPlayingVideo }) => {
       const seconds = Math.floor(durationInSeconds % 60);
       setVideoProgress(durationInSeconds)
       setSettings(prev => ({ ...prev, currentDuration: `${minutes}:${seconds}` }));
+
+
+
+      localStorage.setItem('videoSettings', JSON.stringify({ ...settings, currentDurationRaw: durationInSeconds }))
+
     };
 
     const updateTimeListener = () => {
       videoTagRef.current.addEventListener('timeupdate', updateCurrentDuration);
     };
 
-    updateTimeListener(); // Call the function to add event listener
+    updateTimeListener();
 
-    // Cleanup function to remove the event listener
+
     return () => {
       videoTagRef?.current?.removeEventListener('timeupdate', updateCurrentDuration);
     };
   }, [videoTagRef]);
+
+
 
   const setVideoFullScreen = () => {
     if (!document.fullscreenElement) {
